@@ -5,6 +5,7 @@ import { withStyles } from "material-ui/styles";
 import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
 import QuestionTypeSelector from "./QuestionTypeSelector";
+import ShortAnswer from "./ShortAnswer";
 
 const styles = () => ({
   cardContent: {
@@ -19,11 +20,11 @@ class QuestionCard extends Component {
   constructor(props) {
     super();
     this.state = {
-      classes: props.classes,
       question: "",
       answer: "",
       imageUrl: ""
     };
+    this.classes = props.classes;
   }
 
   handleDeleteButton = () => {
@@ -50,9 +51,8 @@ class QuestionCard extends Component {
 
   render() {
     return (
-      <Card className={this.state.classes.card}>
-        <CardContent className={this.state.classes.cardContent}>
-          <QuestionTypeSelector />
+      <Card className={this.classes.card}>
+        <CardContent className={this.classes.cardContent}>
           <TextField
             id="question"
             label="Question"
@@ -65,20 +65,12 @@ class QuestionCard extends Component {
             InputLabelProps={{ style: { fontSize: 30 } }}
           />
 
+          <QuestionTypeSelector className={this.classes.right} />
+
           <QuestionImage imageUrl={this.state.imageUrl} />
 
-          <TextField
-            style={{ marginTop: 0 }}
-            margin="normal"
-            defaultValue="Short answer text"
-            inputProps={{
-              style: {
-                marginTop: 15,
-                color: "gray"
-              },
-              readOnly: true
-            }}
-          />
+          <ShortAnswer />
+
           <TextField
             id="answer"
             label="Answer"

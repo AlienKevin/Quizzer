@@ -7,12 +7,18 @@ import DropdownIcon from "material-ui-icons/ArrowDropDownCircle";
 import SvgIcon from "material-ui/SvgIcon";
 import { withStyles } from "material-ui/styles";
 
-const styles = theme => ({
-  icon: {
-    marginRight: theme.spacing.unit,
-    marginLeft: theme.spacing.unit
-  }
-});
+const styles = theme => {
+  console.log(theme);
+  return {
+    icon: {
+      marginRight: theme.spacing.unit,
+      marginLeft: theme.spacing.unit
+    },
+    select: {
+      background: theme.palette.grey["200"]
+    }
+  };
+};
 
 function ParagraphIcon(props) {
   return (
@@ -44,6 +50,7 @@ class QuestionTypeSelector extends Component {
   render() {
     return (
       <Select
+        className={this.classes.select}
         value={this.state.type}
         onChange={this.handleSelect}
         inputProps={{
