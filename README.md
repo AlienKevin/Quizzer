@@ -1,2 +1,0 @@
-# Quizzer
-Created with CodeSandbox
