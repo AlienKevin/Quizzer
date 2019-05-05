@@ -4,6 +4,7 @@ import { CardContent, TextField } from "material-ui";
 import { withStyles } from "material-ui/styles";
 import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
+import QuestionTypeSelector from "./QuestionTypeSelector";
 
 const styles = () => ({
   cardContent: {
@@ -51,6 +52,7 @@ class QuestionCard extends Component {
     return (
       <Card className={this.state.classes.card}>
         <CardContent className={this.state.classes.cardContent}>
+          <QuestionTypeSelector />
           <TextField
             id="question"
             label="Question"
