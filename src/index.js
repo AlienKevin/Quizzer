@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import { Footer, Header, QuizMaker } from "./components";
+import { Header, QuizMaker } from "./components";
 import "./styles.css";
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
     <Fragment>
       <Header />
       <QuizMaker />
-      <Footer />
     </Fragment>
   );
 }
