@@ -13,7 +13,8 @@ class AddImageAction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      inputOpen: false,
+      alertOpen: false,
       imageUrl: ""
     };
     this.onAddImage = props.onAddImage;
@@ -26,16 +27,15 @@ class AddImageAction extends Component {
     });
   };
 
-  handleClose = callback => {
+  handleClose = id => {
     this.setState({
-      open: false
+      [id + "Open"]: false
     });
-    callback();
   };
 
-  handleOpen = () => {
+  handleOpen = id => {
     this.setState({
-      open: true
+      [id + "Open"]: true
     });
   };
 
@@ -43,14 +43,15 @@ class AddImageAction extends Component {
     return (
       <Fragment>
         <Tooltip title="Add Image">
-          <IconButton onClick={this.handleOpen}>
+          <IconButton onClick={() => this.handleOpen("input")}>
             <ImageIcon />
           </IconButton>
         </Tooltip>
 
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          id="input"
+          open={this.state.inputOpen}
+          onClose={() => this.handleClose("input")}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Add Image</DialogTitle>
@@ -68,24 +69,88 @@ class AddImageAction extends Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={() => this.handleClose("input")} color="primary">
               Cancel
             </Button>
             <Button
-              onClick={() =>
-                this.handleClose(() => {
-                  this.onAddImage(this.state.imageUrl);
-                })
-              }
+              onClick={() => {
+                this.handleClose("input");
+                testImage(this.state.imageUrl)
+                  .then(() => {
+                    this.onAddImage(this.state.imageUrl);
+                  })
+                  .catch(error => {
+                    this.setState({
+                      alertOpen: true
+                    });
+                  });
+              }}
               color="primary"
             >
               Add
             </Button>
           </DialogActions>
         </Dialog>
+
+        {/* Alert box for invalid image url*/}
+        <Dialog
+          id="alert"
+          open={this.state.alertOpen}
+          onClose={() => this.handleClose("alert")}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          {/* <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle> */}
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Invalid Image Url
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                this.handleClose("alert");
+                this.handleOpen("input");
+              }}
+              color="primary"
+            >
+              Change Url
+            </Button>
+            <Button
+              onClick={() => this.handleClose("alert")}
+              color="primary"
+              autoFocus
+            >
+              Okay
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Fragment>
     );
   }
+}
+
+function testImage(url, timeoutT) {
+  return new Promise(function(resolve, reject) {
+    var timeout = timeoutT || 2000;
+    var timer,
+      img = new Image();
+    img.onerror = img.onabort = function() {
+      clearTimeout(timer);
+      reject("error");
+    };
+    img.onload = function() {
+      clearTimeout(timer);
+      resolve("success");
+    };
+    timer = setTimeout(function() {
+      // reset .src to invalid URL so it stops previous
+      // loading, but doens't trigger new load
+      img.src = "//!!!!/noexist.jpg";
+      reject("timeout");
+    }, timeout);
+    img.src = url;
+  });
 }
 
 export default AddImageAction;
