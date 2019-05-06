@@ -8,7 +8,6 @@ import SvgIcon from "material-ui/SvgIcon";
 import { withStyles } from "material-ui/styles";
 
 const styles = theme => {
-  console.log(theme);
   return {
     icon: {
       marginRight: theme.spacing.unit,
@@ -38,13 +37,24 @@ class QuestionTypeSelector extends Component {
       type: "paragraph"
     };
     this.classes = props.classes;
+    this.onTypeChange = props.onTypeChange;
   }
 
   handleSelect = event => {
     const target = event.target;
-    this.setState({
-      type: target.value
+    const newType = target.value;
+    let isTypeNew = true;
+    this.setState(prevState => {
+      if (prevState.type !== newType) {
+        isTypeNew = false;
+      }
+      return {
+        type: newType
+      };
     });
+    if (isTypeNew) {
+      this.onTypeChange(newType);
+    }
   };
 
   render() {

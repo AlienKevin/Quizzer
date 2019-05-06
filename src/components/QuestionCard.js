@@ -6,6 +6,7 @@ import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
 import QuestionTypeSelector from "./QuestionTypeSelector";
 import ShortAnswer from "./ShortAnswer";
+import Paragraph from "./Paragraph";
 
 const styles = () => ({
   cardContent: {
@@ -16,23 +17,22 @@ const styles = () => ({
   }
 });
 
+const defaultState = {
+  question: "",
+  answer: "",
+  imageUrl: "",
+  type: "shortAnswer"
+};
+
 class QuestionCard extends Component {
   constructor(props) {
     super();
-    this.state = {
-      question: "",
-      answer: "",
-      imageUrl: ""
-    };
+    this.state = Object.assign({}, defaultState);
     this.classes = props.classes;
   }
 
   handleDeleteButton = () => {
-    this.setState({
-      question: "",
-      answer: "",
-      imageUrl: ""
-    });
+    this.setState(Object.assign({}, defaultState));
   };
 
   handleAddImageButton = imageUrl => {
@@ -46,6 +46,12 @@ class QuestionCard extends Component {
     const target = event.target;
     this.setState({
       [target.id]: target.value
+    });
+  };
+
+  handleTypeChange = newType => {
+    this.setState({
+      type: newType
     });
   };
 
@@ -65,11 +71,16 @@ class QuestionCard extends Component {
             InputLabelProps={{ style: { fontSize: 30 } }}
           />
 
-          <QuestionTypeSelector className={this.classes.right} />
+          <QuestionTypeSelector onTypeChange={this.handleTypeChange} />
 
           <QuestionImage imageUrl={this.state.imageUrl} />
 
-          <ShortAnswer />
+          {
+            {
+              shortAnswer: <ShortAnswer />,
+              paragraph: <Paragraph />
+            }[this.state.type]
+          }
 
           <TextField
             id="answer"
