@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { TextField, List, ListItem, Typography } from "material-ui";
+import { TextField, List, ListItem, Typography, IconButton } from "material-ui";
+import CloseIcon from "material-ui-icons/Close";
 import { withStyles } from "material-ui/styles";
 
 const styles = theme => ({
@@ -24,37 +25,56 @@ class Dropdown extends Component {
     }));
   };
 
+  handleCloseOptionButton = index => {
+    this.setState(prevState => {
+      // remove the options
+      prevState.options.splice(index, 1);
+      return {
+        options: prevState.options
+      };
+    });
+  };
+
   render() {
     return (
       <List>
-        {/* <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-        </ListItem> */}
-        {this.state.options.map((option, index) => (
-          <ListItem>
+        {(() => {
+          console.log("dropdowning...");
+          const ListNumber = ({ index }) => (
             <Typography
               className={this.classes.listNumber}
               variant="body2"
               color="textSecondary"
             >
-              {index + 1 + "."}
+              {index + "."}
             </Typography>
-            <TextField placeholder={option} />
-          </ListItem>
-        ))}
-        {
-          <ListItem onClick={this.handleAddOption}>
-            <TextField
-              placeholder={"Add option"}
-              InputProps={{
-                readOnly: true
-              }}
-            />
-          </ListItem>
-        }
+          );
+          let dropdown = this.state.options.map((option, index) => (
+            <ListItem>
+              <ListNumber index={index + 1} />
+              <TextField placeholder={option} />
+              {this.state.options.length > 1 && (
+                <IconButton
+                  onClick={index => this.handleCloseOptionButton(index)}
+                >
+                  <CloseIcon />
+                </IconButton>
+              )}
+            </ListItem>
+          ));
+          dropdown.push(
+            <ListItem onClick={this.handleAddOption}>
+              <ListNumber index={this.state.options.length + 1} />
+              <TextField
+                placeholder={"Add option"}
+                InputProps={{
+                  readOnly: true
+                }}
+              />
+            </ListItem>
+          );
+          return dropdown;
+        })()}
       </List>
     );
   }
