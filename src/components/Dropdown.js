@@ -62,6 +62,7 @@ class Dropdown extends Component {
               {index + "."}
             </Typography>
           );
+          console.log(this.state.options);
           let dropdown = this.state.options.map((option, index) => {
             console.log("option: " + option);
             return (
@@ -91,6 +92,7 @@ class Dropdown extends Component {
                 InputProps={{
                   readOnly: true
                 }}
+                value=""
               />
             </ListItem>
           );
