@@ -7,6 +7,7 @@ import QuestionImage from "./QuestionImage";
 import QuestionTypeSelector from "./QuestionTypeSelector";
 import ShortAnswer from "./ShortAnswer";
 import Paragraph from "./Paragraph";
+import Dropdown from "./Dropdown";
 
 const styles = () => ({
   cardContent: {
@@ -78,7 +79,8 @@ class QuestionCard extends Component {
           {
             {
               shortAnswer: <ShortAnswer />,
-              paragraph: <Paragraph />
+              paragraph: <Paragraph />,
+              dropdown: <Dropdown />
             }[this.state.type]
           }
 
