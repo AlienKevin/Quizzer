@@ -9,6 +9,7 @@ import ShortAnswer from "./ShortAnswer";
 import Paragraph from "./Paragraph";
 import Dropdown from "./Dropdown";
 import Checkbox from "./Checkbox";
+import MultipleChoice from "./MultipleChoice";
 
 const styles = () => ({
   cardContent: {
@@ -82,7 +83,8 @@ class QuestionCard extends Component {
               shortAnswer: <ShortAnswer />,
               paragraph: <Paragraph />,
               dropdown: <Dropdown />,
-              checkbox: <Checkbox />
+              checkbox: <Checkbox />,
+              multipleChoice: <MultipleChoice />
             }[this.state.type]
           }
 

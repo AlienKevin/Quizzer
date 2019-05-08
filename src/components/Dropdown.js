@@ -16,12 +16,16 @@ class Dropdown extends Component {
   }
   render() {
     const ListNumber = ({ index }) => (
-      <Typography variant="body2" color="textSecondary" className="ListNumber">
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        className={this.classes.ListNumber}
+      >
         {index + "."}
       </Typography>
     );
-    return <SelectionCreator ListMarker={withStyles(styles)(ListNumber)} />;
+    return <SelectionCreator ListMarker={ListNumber} />;
   }
 }
 
-export default Dropdown;
+export default withStyles(styles)(Dropdown);
