@@ -109,7 +109,7 @@ class SelectionCreator extends Component {
                           this.selectOption(index - 1);
                         }
                       } else if (key === "Backspace") {
-                        if (input.value === "") {
+                        if (input.value === "" && index > 0) {
                           event.preventDefault();
                           this.closeOption(index);
                         }
