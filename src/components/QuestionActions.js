@@ -3,8 +3,8 @@ import { CardActions, IconButton } from "material-ui";
 import Tooltip from "material-ui/Tooltip";
 import DeleteIcon from "material-ui-icons/Delete";
 import PlayIcon from "material-ui-icons/PlayCircleFilled";
-import CodeIcon from "material-ui-icons/Code";
 import AddImageAction from "./AddImageAction";
+import AddCodeAction from "./AddCodeAction";
 
 class QuestionActions extends Component {
   constructor(props) {
@@ -30,11 +30,7 @@ class QuestionActions extends Component {
 
         <AddImageAction onAddImage={this.onAddImage} />
 
-        <Tooltip title="Add Code">
-          <IconButton>
-            <CodeIcon />
-          </IconButton>
-        </Tooltip>
+        <AddCodeAction onAddCode={this.onAddCode} />
       </CardActions>
     );
   }
