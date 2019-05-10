@@ -4,6 +4,7 @@ import { CardContent, TextField } from "material-ui";
 import { withStyles } from "material-ui/styles";
 import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
+import QuestionCode from "./QuestionCode";
 import QuestionTypeSelector from "./QuestionTypeSelector";
 import ShortAnswer from "./ShortAnswer";
 import Paragraph from "./Paragraph";
@@ -81,6 +82,8 @@ class QuestionCard extends Component {
           />
 
           <QuestionImage imageUrl={this.state.imageUrl} />
+
+          <QuestionCode />
 
           {
             {
