@@ -86,16 +86,16 @@ class SelectionCreator extends Component {
                       });
                     },
                     onKeyDown: event => {
-                      console.log("keypress keyCode: ", event.key);
+                      // console.log("keypress keyCode: ", event.key);
                       const key = event.key;
                       if (key === "Enter" || key === "ArrowDown") {
-                        console.log("Enter key is pressed!");
-                        console.log("keypress index: ", index);
-                        console.log(
-                          "this.state.options.length: ",
-                          this.state.options.length
-                        );
-                        console.log("keypress selected: ", this.state.selected);
+                        // console.log("Enter key is pressed!");
+                        // console.log("keypress index: ", index);
+                        // console.log(
+                        //   "this.state.options.length: ",
+                        //   this.state.options.length
+                        // );
+                        // console.log("keypress selected: ", this.state.selected);
                         if (index >= this.state.options.length - 1) {
                           this.handleAddOption();
                         } else {
