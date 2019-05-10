@@ -24,7 +24,7 @@ const defaultState = {
   question: "",
   answer: "",
   imageUrl: "",
-  type: "shortAnswer"
+  type: "multipleChoice"
 };
 
 class QuestionCard extends Component {
@@ -74,7 +74,10 @@ class QuestionCard extends Component {
             InputLabelProps={{ style: { fontSize: 30 } }}
           />
 
-          <QuestionTypeSelector onTypeChange={this.handleTypeChange} />
+          <QuestionTypeSelector
+            defaultType={defaultState.type}
+            onTypeChange={this.handleTypeChange}
+          />
 
           <QuestionImage imageUrl={this.state.imageUrl} />
 

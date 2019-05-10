@@ -35,6 +35,7 @@ class SelectionCreator extends Component {
       return result;
     });
     this.inputs.pop();
+    this.selectOption(index - 1);
     console.log("inputs: ", this.inputs);
   };
 
