@@ -122,7 +122,11 @@ class SelectionCreator extends Component {
                     input && this.inputs.push(input);
                     console.log("selected: ", this.state.selected);
                     console.log("inputRef index: ", index);
-                    if (this.state.selected === index && input) {
+                    if (
+                      this.state.selected === index &&
+                      input &&
+                      !isInIframe()
+                    ) {
                       console.log("input is being focused...");
                       input.focus();
                     }
@@ -154,4 +158,14 @@ class SelectionCreator extends Component {
     );
   }
 }
+
+function isInIframe() {
+  return true;
+  // try {
+  //   return window.self !== window.top;
+  // } catch (e) {
+  //   return true;
+  // }
+}
+
 export default withStyles(styles)(SelectionCreator);

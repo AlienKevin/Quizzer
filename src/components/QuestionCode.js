@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { withStyles } from "material-ui/styles";
 import Codemirror from "react-codemirror";
 import "codemirror/lib/codemirror.css";
-import "codemirror/mode/markdown/markdown";
 
 const defaults = {
-  markdown:
-    "# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)",
-  javascript:
-    'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
+  markdown: "# Type Markdown here",
+  javascript: "console.log('hello world')"
 };
 
 const styles = {
@@ -18,26 +15,34 @@ const styles = {
   }
 };
 
+async function loadModule(url) {
+  await import(url);
+  return;
+}
+
 class QuestionCode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: defaults.markdown,
+      codeContent: props.codeContent,
       readOnly: false,
-      mode: "markdown"
+      codeLanguage: props.codeLanguage
     };
+    loadModule(
+      "codemirror/mode/" + props.codeLanguage + "/" + props.codeLanguage
+    );
     this.classes = props.classes;
   }
   updateCode = newCode => {
     this.setState({
-      code: newCode
+      codeContent: newCode
     });
   };
   changeMode = e => {
     var mode = e.target.value;
     this.setState({
       mode: mode,
-      code: defaults[mode]
+      codeContent: defaults[mode]
     });
   };
   toggleReadOnly = () => {
@@ -52,17 +57,19 @@ class QuestionCode extends Component {
     var options = {
       lineNumbers: true,
       readOnly: this.state.readOnly,
-      mode: this.state.mode
+      mode: this.state.codeLanguage
     };
     return (
-      <Codemirror
-        ref="editor"
-        value={this.state.code}
-        onChange={this.updateCode}
-        options={options}
-        autoFocus={false}
-        className={this.classes.code}
-      />
+      this.state.codeContent !== null && (
+        <Codemirror
+          ref="editor"
+          value={this.state.codeContent}
+          onChange={this.updateCode}
+          options={options}
+          autoFocus={false}
+          className={this.classes.code}
+        />
+      )
     );
   }
 }

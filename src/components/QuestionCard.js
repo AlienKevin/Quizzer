@@ -25,6 +25,8 @@ const defaultState = {
   question: "",
   answer: "",
   imageUrl: "",
+  codeContent: null,
+  codeLanguage: "javascript",
   type: "multipleChoice"
 };
 
@@ -78,7 +80,10 @@ class QuestionCard extends Component {
 
           <QuestionImage imageUrl={this.state.imageUrl} />
 
-          <QuestionCode />
+          <QuestionCode
+            codeContent={this.state.codeContent}
+            codeLanguage={this.state.codeLanguage}
+          />
 
           <QuestionTypeSelector
             defaultType={defaultState.type}
