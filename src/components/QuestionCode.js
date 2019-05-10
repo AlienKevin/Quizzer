@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withStyles } from "material-ui/styles";
 import Codemirror from "react-codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/markdown/markdown";
@@ -10,6 +11,13 @@ const defaults = {
     'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
 };
 
+const styles = {
+  code: {
+    marginTop: "1em",
+    marginBottom: "1em"
+  }
+};
+
 class QuestionCode extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +26,7 @@ class QuestionCode extends Component {
       readOnly: false,
       mode: "markdown"
     };
+    this.classes = props.classes;
   }
   updateCode = newCode => {
     this.setState({
@@ -51,10 +60,11 @@ class QuestionCode extends Component {
         value={this.state.code}
         onChange={this.updateCode}
         options={options}
-        autoFocus={true}
+        autoFocus={false}
+        className={this.classes.code}
       />
     );
   }
 }
 
-export default QuestionCode;
+export default withStyles(styles)(QuestionCode);

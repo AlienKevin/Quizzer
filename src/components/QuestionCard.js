@@ -76,14 +76,14 @@ class QuestionCard extends Component {
             fullWidth={true}
           />
 
+          <QuestionImage imageUrl={this.state.imageUrl} />
+
+          <QuestionCode />
+
           <QuestionTypeSelector
             defaultType={defaultState.type}
             onTypeChange={this.handleTypeChange}
           />
-
-          <QuestionImage imageUrl={this.state.imageUrl} />
-
-          <QuestionCode />
 
           {
             {
