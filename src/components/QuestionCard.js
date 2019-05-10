@@ -72,6 +72,7 @@ class QuestionCard extends Component {
               style: { fontSize: 30 }
             }}
             InputLabelProps={{ style: { fontSize: 30 } }}
+            fullWidth={true}
           />
 
           <QuestionTypeSelector
@@ -96,6 +97,7 @@ class QuestionCard extends Component {
             label="Answer"
             value={this.state.answer}
             onChange={this.updateValue}
+            fullWidth={true}
           />
         </CardContent>
         <QuestionActions
