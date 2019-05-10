@@ -23,7 +23,7 @@ class SelectionCreator extends Component {
     }));
   };
 
-  handleCloseOptionButton = index => {
+  closeOption = index => {
     console.log("index closed: ", index);
     this.setState(prevState => {
       // remove the options
@@ -88,6 +88,7 @@ class SelectionCreator extends Component {
                     onKeyDown: event => {
                       // console.log("keypress keyCode: ", event.key);
                       const key = event.key;
+                      const input = event.target;
                       if (key === "Enter" || key === "ArrowDown") {
                         // console.log("Enter key is pressed!");
                         // console.log("keypress index: ", index);
@@ -106,6 +107,11 @@ class SelectionCreator extends Component {
                         if (index > 0) {
                           this.selectOption(index - 1);
                         }
+                      } else if (key === "Backspace") {
+                        if (input.value === "") {
+                          event.preventDefault();
+                          this.closeOption(index);
+                        }
                       }
                     }
                   }}
@@ -122,9 +128,7 @@ class SelectionCreator extends Component {
                   }}
                 />
                 {this.state.options.length > 1 && (
-                  <IconButton
-                    onClick={() => this.handleCloseOptionButton(index)}
-                  >
+                  <IconButton onClick={() => this.closeOption(index)}>
                     <CloseIcon />
                   </IconButton>
                 )}
