@@ -30,6 +30,11 @@ const styles = {
   }
 };
 
+const codeLanguageSelectorStyles = styles => ({
+  ...styles,
+  fontFamily: "sans-serif"
+});
+
 class AddCodeAction extends Component {
   constructor(props) {
     super(props);
@@ -87,6 +92,12 @@ class AddCodeAction extends Component {
               value={this.state.codeLanguage}
               onChange={this.handleSelect}
               options={codeLanguages}
+              styles={{
+                input: codeLanguageSelectorStyles,
+                placeholder: codeLanguageSelectorStyles,
+                singleValue: codeLanguageSelectorStyles,
+                option: codeLanguageSelectorStyles
+              }}
             />
           </DialogContent>
           <DialogActions>
