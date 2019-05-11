@@ -25,7 +25,7 @@ console.log(codeLanguages);
 
 const styles = {
   dialog: {
-    minHeight: "80vh",
+    minHeight: "550px",
     maxHeight: "80vh"
   }
 };
