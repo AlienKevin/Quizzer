@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { withStyles } from "material-ui/styles";
 import { Tooltip, IconButton } from "material-ui";
 import CodeIcon from "material-ui-icons/Code";
 import { Dialog, TextField, Button } from "material-ui";
@@ -8,13 +9,35 @@ import {
   DialogContentText,
   DialogActions
 } from "material-ui/Dialog";
+import Select from "react-select";
+import codeLanguageList from "./codeMirrorLanguages.json";
+
+const codeLanguages = Object.values(codeLanguageList)
+  .map(mode =>
+    mode.map(languageName => ({
+      label: languageName,
+      value: languageName
+    }))
+  )
+  .flat();
+
+console.log(codeLanguages);
+
+const styles = {
+  dialog: {
+    minHeight: "80vh",
+    maxHeight: "80vh"
+  }
+};
 
 class AddCodeAction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputOpen: false
+      inputOpen: false,
+      codeLanguage: ""
     };
+    this.classes = props.classes;
     this.onAddCode = props.onAddCode;
   }
 
@@ -37,6 +60,11 @@ class AddCodeAction extends Component {
     });
   };
 
+  handleSelect = selectedOption => {
+    this.setState({ codeLanguage: selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  };
+
   render() {
     return (
       <Fragment>
@@ -50,19 +78,15 @@ class AddCodeAction extends Component {
           open={this.state.inputOpen}
           onClose={() => this.handleClose("input")}
           aria-labelledby="form-dialog-title"
+          classes={{ paper: this.classes.dialog }}
         >
           <DialogTitle id="form-dialog-title">Add Code</DialogTitle>
           <DialogContent>
             <DialogContentText>Select the language: </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="imageUrl"
-              placeholder="url"
-              type="url"
-              value={this.state.imageUrl}
-              onChange={this.updateValue}
-              fullWidth
+            <Select
+              value={this.state.codeLanguage}
+              onChange={this.handleSelect}
+              options={codeLanguages}
             />
           </DialogContent>
           <DialogActions>
@@ -84,4 +108,4 @@ class AddCodeAction extends Component {
   }
 }
 
-export default AddCodeAction;
+export default withStyles(styles)(AddCodeAction);
