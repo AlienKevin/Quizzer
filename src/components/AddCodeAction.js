@@ -9,33 +9,7 @@ import {
   DialogContentText,
   DialogActions
 } from "material-ui/Dialog";
-import Select from "react-select";
-import codeLanguageList from "./codeMirrorLanguages.json";
-
-// remove when dynamic import is working in QuestionCode
-const workingModeList = [
-  "xml",
-  "css",
-  "javascript",
-  "htmlmixed",
-  "sql",
-  "python",
-  "clike"
-];
-
-const codeLanguages = Object.entries(codeLanguageList)
-  .filter(([mode, languageNames]) => {
-    return workingModeList.indexOf(mode) >= 0;
-  })
-  .map(([mode, languageNames]) =>
-    languageNames.map(languageName => ({
-      label: languageName,
-      value: languageName
-    }))
-  )
-  .flat();
-
-console.log(codeLanguages);
+import CodeLanguageSelector from "./CodeLanguageSelector";
 
 const styles = {
   dialog: {
@@ -44,29 +18,11 @@ const styles = {
   }
 };
 
-const codeLanguageSelectorStyles = styles => ({
-  ...styles,
-  fontFamily: "sans-serif"
-});
-
-const getLanguageMode = languageName => {
-  let languageMode = undefined;
-  Object.keys(codeLanguageList).forEach(mode => {
-    // console.log(codeLanguageList[mode]);
-    if (codeLanguageList[mode].indexOf(languageName) >= 0) {
-      // console.log("find language mode!");
-      languageMode = mode;
-    }
-  });
-  return languageMode;
-};
-
 class AddCodeAction extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputOpen: false,
-      codeLanguageOption: null,
       codeLanguage: ""
     };
     this.classes = props.classes;
@@ -92,15 +48,9 @@ class AddCodeAction extends Component {
     });
   };
 
-  handleSelect = selectedOption => {
-    console.log("selected option: ", selectedOption);
-    const selectedLanguage = selectedOption.value;
-    console.log("selectedLanguage: " + selectedLanguage);
-    const languageMode = getLanguageMode(selectedLanguage);
-    console.log("languageMode: " + languageMode);
+  handleLanguageSelect = newLanguage => {
     this.setState({
-      codeLanguageOption: selectedOption,
-      codeLanguage: languageMode + "/" + selectedLanguage
+      codeLanguage: newLanguage
     });
   };
 
@@ -122,16 +72,9 @@ class AddCodeAction extends Component {
           <DialogTitle id="form-dialog-title">Add Code</DialogTitle>
           <DialogContent>
             <DialogContentText>Select the language: </DialogContentText>
-            <Select
-              value={this.state.codeLanguageOption}
-              onChange={this.handleSelect}
-              options={codeLanguages}
-              styles={{
-                input: codeLanguageSelectorStyles,
-                placeholder: codeLanguageSelectorStyles,
-                singleValue: codeLanguageSelectorStyles,
-                option: codeLanguageSelectorStyles
-              }}
+
+            <CodeLanguageSelector
+              handleLanguageSelect={this.handleLanguageSelect}
             />
           </DialogContent>
           <DialogActions>
