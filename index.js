@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Footer, Header, QuizMaker } from "./components";
 import "./styles.css";
-import "typeface-roboto";
 
 function App() {
   return (
