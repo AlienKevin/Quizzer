@@ -11,6 +11,7 @@ class QuestionActions extends Component {
     super(props);
     this.onDelete = props.onDelete;
     this.onAddImage = props.onAddImage;
+    this.onAddCode = props.onAddCode;
   }
 
   render() {

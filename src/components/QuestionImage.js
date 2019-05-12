@@ -9,7 +9,7 @@ const styles = {
 };
 
 function QuestionImage({ imageUrl, classes }) {
-  return imageUrl && <CardMedia className={classes.media} image={imageUrl} />;
+  return <CardMedia className={classes.media} image={imageUrl} />;
 }
 
 export default withStyles(styles)(QuestionImage);

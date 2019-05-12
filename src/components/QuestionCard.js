@@ -26,7 +26,7 @@ const defaultState = {
   answer: "",
   imageUrl: "",
   codeContent: null,
-  codeLanguage: "javascript",
+  codeLanguage: "javascript/javascript",
   type: "multipleChoice"
 };
 
@@ -45,6 +45,14 @@ class QuestionCard extends Component {
     console.log(imageUrl);
     this.setState({
       imageUrl: imageUrl
+    });
+  };
+
+  handleAddCodeButton = codeLanguage => {
+    console.log("language: " + codeLanguage);
+    this.setState({
+      codeLanguage: codeLanguage,
+      codeContent: ""
     });
   };
 
@@ -78,12 +86,16 @@ class QuestionCard extends Component {
             fullWidth={true}
           />
 
-          <QuestionImage imageUrl={this.state.imageUrl} />
+          {this.state.imageUrl && (
+            <QuestionImage imageUrl={this.state.imageUrl} />
+          )}
 
-          <QuestionCode
-            codeContent={this.state.codeContent}
-            codeLanguage={this.state.codeLanguage}
-          />
+          {this.state.codeContent !== null && (
+            <QuestionCode
+              codeContent={this.state.codeContent}
+              codeLanguage={this.state.codeLanguage}
+            />
+          )}
 
           <QuestionTypeSelector
             defaultType={defaultState.type}
@@ -111,6 +123,7 @@ class QuestionCard extends Component {
         <QuestionActions
           onDelete={this.handleDeleteButton}
           onAddImage={this.handleAddImageButton}
+          onAddCode={this.handleAddCodeButton}
         />
       </Card>
     );

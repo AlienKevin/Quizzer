@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { withStyles } from "material-ui/styles";
 import { Tooltip, IconButton } from "material-ui";
 import CodeIcon from "material-ui-icons/Code";
-import { Dialog, TextField, Button } from "material-ui";
+import { Dialog, Button } from "material-ui";
 import {
   DialogTitle,
   DialogContent,
@@ -35,11 +35,24 @@ const codeLanguageSelectorStyles = styles => ({
   fontFamily: "sans-serif"
 });
 
+const getLanguageMode = languageName => {
+  let languageMode = undefined;
+  Object.keys(codeLanguageList).forEach(mode => {
+    // console.log(codeLanguageList[mode]);
+    if (codeLanguageList[mode].indexOf(languageName) >= 0) {
+      // console.log("find language mode!");
+      languageMode = mode;
+    }
+  });
+  return languageMode;
+};
+
 class AddCodeAction extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputOpen: false,
+      codeLanguageOption: null,
       codeLanguage: ""
     };
     this.classes = props.classes;
@@ -66,8 +79,15 @@ class AddCodeAction extends Component {
   };
 
   handleSelect = selectedOption => {
-    this.setState({ codeLanguage: selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    console.log("selected option: ", selectedOption);
+    const selectedLanguage = selectedOption.value;
+    console.log("selectedLanguage: " + selectedLanguage);
+    const languageMode = getLanguageMode(selectedLanguage);
+    console.log("languageMode: " + languageMode);
+    this.setState({
+      codeLanguageOption: selectedOption,
+      codeLanguage: languageMode + "/" + selectedLanguage
+    });
   };
 
   render() {
@@ -89,7 +109,7 @@ class AddCodeAction extends Component {
           <DialogContent>
             <DialogContentText>Select the language: </DialogContentText>
             <Select
-              value={this.state.codeLanguage}
+              value={this.state.codeLanguageOption}
               onChange={this.handleSelect}
               options={codeLanguages}
               styles={{
@@ -107,6 +127,7 @@ class AddCodeAction extends Component {
             <Button
               onClick={() => {
                 this.handleClose("input");
+                this.onAddCode(this.state.codeLanguage);
               }}
               color="primary"
             >
