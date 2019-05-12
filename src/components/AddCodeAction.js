@@ -12,9 +12,23 @@ import {
 import Select from "react-select";
 import codeLanguageList from "./codeMirrorLanguages.json";
 
-const codeLanguages = Object.values(codeLanguageList)
-  .map(mode =>
-    mode.map(languageName => ({
+// remove when dynamic import is working in QuestionCode
+const workingModeList = [
+  "xml",
+  "css",
+  "javascript",
+  "htmlmixed",
+  "sql",
+  "python",
+  "clike"
+];
+
+const codeLanguages = Object.entries(codeLanguageList)
+  .filter(([mode, languageNames]) => {
+    return workingModeList.indexOf(mode) >= 0;
+  })
+  .map(([mode, languageNames]) =>
+    languageNames.map(languageName => ({
       label: languageName,
       value: languageName
     }))
