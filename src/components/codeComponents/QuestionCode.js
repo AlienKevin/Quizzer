@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { withStyles } from "material-ui/styles";
 import Codemirror from "react-codemirror";
 import CodeControl from "./CodeControl";
+import CodeConsole from "./CodeConsole";
 
 // basic codemirror css
 import "codemirror/lib/codemirror.css";
@@ -149,6 +150,7 @@ class QuestionCode extends Component {
           className={this.classes.code}
         />
         <CodeControl onRun={this.runCode} />
+        <CodeConsole />
       </Fragment>
     );
   }
