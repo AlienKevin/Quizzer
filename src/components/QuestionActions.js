@@ -4,7 +4,7 @@ import Tooltip from "material-ui/Tooltip";
 import DeleteIcon from "material-ui-icons/Delete";
 import PlayIcon from "material-ui-icons/PlayCircleFilled";
 import AddImageAction from "./AddImageAction";
-import AddCodeAction from "./AddCodeAction";
+import AddCodeAction from "./codeComponents/AddCodeAction";
 
 class QuestionActions extends Component {
   constructor(props) {

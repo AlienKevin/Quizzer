@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withStyles } from "material-ui/styles";
 import Codemirror from "react-codemirror";
+import CodeControl from "./CodeControl";
 
 // basic codemirror css
 import "codemirror/lib/codemirror.css";
@@ -48,6 +49,34 @@ class QuestionCode extends Component {
     // this.loadMode();
     this.classes = props.classes;
   }
+
+  runCode = () => {
+    const language = this.getLanguageName();
+    const code = this.state.codeContent;
+
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const targetUrl = `https://run.glot.io/languages/${language}/latest`;
+    const url = proxyUrl + targetUrl;
+    const requestData = {
+      files: [
+        {
+          name: `main`,
+          content: code
+        }
+      ]
+    };
+    return fetch(url, {
+      body: JSON.stringify(requestData),
+      headers: {
+        Authorization: "Token 736f3d3d-8d42-4db9-92f9-2ecb8b249787",
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
   updateCode = newCode => {
     this.setState({
       codeContent: newCode
@@ -110,14 +139,17 @@ class QuestionCode extends Component {
     };
     // console.log("this.state.codeContent: ", this.state.codeContent);
     return (
-      <Codemirror
-        ref="editor"
-        value={this.state.codeContent}
-        onChange={this.updateCode}
-        options={options}
-        autoFocus={false}
-        className={this.classes.code}
-      />
+      <Fragment>
+        <Codemirror
+          ref="editor"
+          value={this.state.codeContent}
+          onChange={this.updateCode}
+          options={options}
+          autoFocus={false}
+          className={this.classes.code}
+        />
+        <CodeControl onRun={this.runCode} />
+      </Fragment>
     );
   }
 }
