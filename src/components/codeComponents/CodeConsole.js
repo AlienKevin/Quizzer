@@ -1,26 +1,10 @@
-import React, { Component } from "react";
-import Codemirror from "react-codemirror";
+import React from "react";
 
-class CodeConsole extends Component {
-  constructor(props) {
-    super(props);
-    this.onRun = props.onRun;
-  }
-
-  render() {
-    var options = {
-      readOnly: true
-    };
-    return (
-      <Codemirror
-        // value={this.state.codeContent}
-        // onChange={this.updateCode}
-        options={options}
-        // autoFocus={false}
-        // className={this.classes.code}
-      />
-    );
-  }
+function CodeConsole(props) {
+  console.log("CodeConsole props: ", props);
+  const stdout = props.output.stdout;
+  console.log("stdout: " + stdout);
+  return <textarea rows="6" cols="40" value={stdout} readOnly={true} />;
 }
 
 export default CodeConsole;

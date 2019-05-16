@@ -43,7 +43,8 @@ class QuestionCode extends Component {
     this.state = {
       codeContent: props.codeContent,
       readOnly: false,
-      codeLanguage: props.codeLanguage
+      codeLanguage: props.codeLanguage,
+      codeOutput: ""
     };
     console.log("props.codeContent: " + props.codeContent);
     console.log("props.codeLanguage: " + props.codeLanguage);
@@ -51,7 +52,7 @@ class QuestionCode extends Component {
     this.classes = props.classes;
   }
 
-  runCode = () => {
+  runCode = (numberOfFetches = 0) => {
     const language = this.getLanguageName();
     const code = this.state.codeContent;
 
@@ -75,7 +76,18 @@ class QuestionCode extends Component {
       method: "POST"
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data =>
+        this.setState({
+          codeOutput: data
+        })
+      )
+      .catch(error => {
+        if (numberOfFetches < 3) {
+          this.runCode(numberOfFetches + 1);
+        } else {
+          console.log(error);
+        }
+      });
   };
 
   updateCode = newCode => {
@@ -150,7 +162,7 @@ class QuestionCode extends Component {
           className={this.classes.code}
         />
         <CodeControl onRun={this.runCode} />
-        <CodeConsole />
+        <CodeConsole output={this.state.codeOutput} />
       </Fragment>
     );
   }
