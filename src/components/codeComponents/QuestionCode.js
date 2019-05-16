@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { withStyles } from "material-ui/styles";
-import Codemirror from "react-codemirror";
+import { Controlled as CodeMirror } from "react-codemirror2";
 import CodeControl from "./CodeControl";
 import CodeConsole from "./CodeConsole";
 
@@ -90,9 +90,10 @@ class QuestionCode extends Component {
       });
   };
 
-  updateCode = newCode => {
+  updateCode = (editor, data, value) => {
+    console.log(value)
     this.setState({
-      codeContent: newCode
+      codeContent: value
     });
   };
   changeMode = e => {
@@ -153,12 +154,10 @@ class QuestionCode extends Component {
     // console.log("this.state.codeContent: ", this.state.codeContent);
     return (
       <Fragment>
-        <Codemirror
-          ref="editor"
+        <CodeMirror
           value={this.state.codeContent}
-          onChange={this.updateCode}
+          onBeforeChange={this.updateCode}
           options={options}
-          autoFocus={false}
           className={this.classes.code}
         />
         <CodeControl onRun={this.runCode} />
