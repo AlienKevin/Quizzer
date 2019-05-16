@@ -91,7 +91,7 @@ class QuestionCode extends Component {
   };
 
   updateCode = (editor, data, value) => {
-    console.log(value)
+    console.log(value);
     this.setState({
       codeContent: value
     });
