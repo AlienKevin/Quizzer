@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { CardActions, IconButton } from "material-ui";
-import Tooltip from "material-ui/Tooltip";
+import { CardActions, IconButton } from "@material-ui/core";
+import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "material-ui-icons/Delete";
 import PlayIcon from "material-ui-icons/PlayCircleFilled";
 import AddImageAction from "./AddImageAction";

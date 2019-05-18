@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { withStyles } from "material-ui/styles";
-import { Tooltip, IconButton } from "material-ui";
+import { withStyles } from "@material-ui/core/styles";
+import { Tooltip, IconButton } from "@material-ui/core";
 import CodeIcon from "material-ui-icons/Code";
-import { Dialog, Button } from "material-ui";
-import {
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions
-} from "material-ui/Dialog";
+import { Dialog, Button } from "@material-ui/core";
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
 import CodeLanguageSelector from "./CodeLanguageSelector";
 
 const styles = {

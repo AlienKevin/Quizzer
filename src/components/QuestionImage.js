@@ -1,6 +1,6 @@
 import React from "react";
-import { CardMedia } from "material-ui";
-import { withStyles } from "material-ui/styles";
+import { CardMedia } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   media: {

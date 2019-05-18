@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Typography } from "material-ui";
+import { AppBar, Typography } from "@material-ui/core";
 
 const Header = function(props) {
   return (

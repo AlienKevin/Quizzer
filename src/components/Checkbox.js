@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SelectionCreator from "./SelectionCreator";
-import { Checkbox as IndividualCheckbox } from "material-ui";
+import { Checkbox as IndividualCheckbox } from "@material-ui/core";
 
 class Checkbox extends Component {
   constructor(props) {

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Select, MenuItem } from "material-ui";
+import { Select, MenuItem } from "@material-ui/core";
 import ShortAnswerIcon from "material-ui-icons/ShortText";
 import MultipleChoiceIcon from "material-ui-icons/RadioButtonChecked";
 import CheckboxIcon from "material-ui-icons/CheckBox";
 import DropdownIcon from "material-ui-icons/ArrowDropDownCircle";
-import SvgIcon from "material-ui/SvgIcon";
-import { withStyles } from "material-ui/styles";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => {
   return {

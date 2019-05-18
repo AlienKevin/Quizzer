@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { TextField, List, ListItem, IconButton } from "material-ui";
+import { TextField, List, ListItem, IconButton } from "@material-ui/core";
 import CloseIcon from "material-ui-icons/Close";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({});
 

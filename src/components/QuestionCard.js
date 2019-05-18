@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card } from "material-ui";
-import { CardContent, TextField } from "material-ui";
-import { withStyles } from "material-ui/styles";
+import { Card } from "@material-ui/core";
+import { CardContent, TextField } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
 import QuestionCode from "./codeComponents/QuestionCode";

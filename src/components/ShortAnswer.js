@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TextField } from "material-ui";
+import { TextField } from "@material-ui/core";
 
 class ShortAnswer extends Component {
   render() {

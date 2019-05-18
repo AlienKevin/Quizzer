@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SelectionCreator from "./SelectionCreator";
 import { RadioButtonUnchecked } from "material-ui-icons";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   icon: {

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import CodeControl from "./CodeControl";
 import CodeConsole from "./CodeConsole";
@@ -14,7 +14,7 @@ import("codemirror/mode/python/python");
 import("codemirror/mode/xml/xml");
 import("codemirror/mode/css/css");
 import("codemirror/mode/javascript/javascript");
-import("codemirror/mode/htmlmixed/html");
+// import("codemirror/mode/htmlmixed/html");
 import("codemirror/mode/sql/sql");
 
 const styles = {

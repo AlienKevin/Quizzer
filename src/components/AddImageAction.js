@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { IconButton, Dialog, TextField, Button } from "material-ui";
-import {
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions
-} from "material-ui/Dialog";
-import Tooltip from "material-ui/Tooltip";
+import { IconButton, Dialog, TextField, Button } from "@material-ui/core";
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import Tooltip from "@material-ui/core/Tooltip";
 import ImageIcon from "material-ui-icons/Image";
 
 class AddImageAction extends Component {

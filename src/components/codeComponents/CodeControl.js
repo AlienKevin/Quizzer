@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IconButton } from "material-ui";
+import { IconButton } from "@material-ui/core";
 import { PlayArrow } from "material-ui-icons";
 
 class CodeControl extends Component {
