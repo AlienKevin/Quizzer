@@ -34,7 +34,7 @@ class QuestionTypeSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: "paragraph"
+      type: props.defaultType
     };
     this.classes = props.classes;
     this.onTypeChange = props.onTypeChange;

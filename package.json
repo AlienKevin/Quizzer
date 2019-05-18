@@ -5,11 +5,14 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "codemirror": "5.46.0",
     "material-ui": "1.0.0-beta.47",
     "material-ui-icons": "1.0.0-beta.36",
     "react": "16.8.6",
+    "react-codemirror2": "6.0.0",
     "react-dom": "16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-select": "2.4.3"
   },
   "devDependencies": {
     "typescript": "3.3.3"
@@ -20,5 +23,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

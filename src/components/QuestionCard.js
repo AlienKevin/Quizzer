@@ -4,11 +4,13 @@ import { CardContent, TextField } from "material-ui";
 import { withStyles } from "material-ui/styles";
 import QuestionActions from "./QuestionActions";
 import QuestionImage from "./QuestionImage";
+import QuestionCode from "./codeComponents/QuestionCode";
 import QuestionTypeSelector from "./QuestionTypeSelector";
 import ShortAnswer from "./ShortAnswer";
 import Paragraph from "./Paragraph";
 import Dropdown from "./Dropdown";
 import Checkbox from "./Checkbox";
+import MultipleChoice from "./MultipleChoice";
 
 const styles = () => ({
   cardContent: {
@@ -23,7 +25,9 @@ const defaultState = {
   question: "",
   answer: "",
   imageUrl: "",
-  type: "shortAnswer"
+  codeContent: null,
+  codeLanguage: "javascript/javascript",
+  type: "multipleChoice"
 };
 
 class QuestionCard extends Component {
@@ -41,6 +45,14 @@ class QuestionCard extends Component {
     console.log(imageUrl);
     this.setState({
       imageUrl: imageUrl
+    });
+  };
+
+  handleAddCodeButton = codeLanguage => {
+    console.log("language: " + codeLanguage);
+    this.setState({
+      codeLanguage: codeLanguage,
+      codeContent: ""
     });
   };
 
@@ -71,18 +83,32 @@ class QuestionCard extends Component {
               style: { fontSize: 30 }
             }}
             InputLabelProps={{ style: { fontSize: 30 } }}
+            fullWidth={true}
           />
 
-          <QuestionTypeSelector onTypeChange={this.handleTypeChange} />
+          {this.state.imageUrl && (
+            <QuestionImage imageUrl={this.state.imageUrl} />
+          )}
 
-          <QuestionImage imageUrl={this.state.imageUrl} />
+          {this.state.codeContent !== null && (
+            <QuestionCode
+              codeContent={this.state.codeContent}
+              codeLanguage={this.state.codeLanguage}
+            />
+          )}
+
+          <QuestionTypeSelector
+            defaultType={defaultState.type}
+            onTypeChange={this.handleTypeChange}
+          />
 
           {
             {
               shortAnswer: <ShortAnswer />,
               paragraph: <Paragraph />,
               dropdown: <Dropdown />,
-              checkbox: <Checkbox />
+              checkbox: <Checkbox />,
+              multipleChoice: <MultipleChoice />
             }[this.state.type]
           }
 
@@ -91,11 +117,13 @@ class QuestionCard extends Component {
             label="Answer"
             value={this.state.answer}
             onChange={this.updateValue}
+            fullWidth={true}
           />
         </CardContent>
         <QuestionActions
           onDelete={this.handleDeleteButton}
           onAddImage={this.handleAddImageButton}
+          onAddCode={this.handleAddCodeButton}
         />
       </Card>
     );

@@ -9,6 +9,7 @@ function TitleCard(props) {
         margin="normal"
         inputProps={{ style: { fontSize: 40 } }}
         InputLabelProps={{ style: { fontSize: 40 } }}
+        fullWidth={true}
       />
       <TextField
         label="Quiz Description"
@@ -19,6 +20,7 @@ function TitleCard(props) {
             color: "gray"
           }
         }}
+        fullWidth={true}
       />
     </div>
   );
