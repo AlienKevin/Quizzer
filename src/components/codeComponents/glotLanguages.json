@@ -1,0 +1,109 @@
+[{
+    "name": "assembly",
+    "url": "https://run.glot.io/languages/assembly"
+}, {
+    "name": "ats",
+    "url": "https://run.glot.io/languages/ats"
+}, {
+    "name": "bash",
+    "url": "https://run.glot.io/languages/bash"
+}, {
+    "name": "c",
+    "url": "https://run.glot.io/languages/c"
+}, {
+    "name": "clojure",
+    "url": "https://run.glot.io/languages/clojure"
+}, {
+    "name": "cobol",
+    "url": "https://run.glot.io/languages/cobol"
+}, {
+    "name": "coffeescript",
+    "url": "https://run.glot.io/languages/coffeescript"
+}, {
+    "name": "cpp",
+    "url": "https://run.glot.io/languages/cpp"
+}, {
+    "name": "crystal",
+    "url": "https://run.glot.io/languages/crystal"
+}, {
+    "name": "csharp",
+    "url": "https://run.glot.io/languages/csharp"
+}, {
+    "name": "d",
+    "url": "https://run.glot.io/languages/d"
+}, {
+    "name": "elixir",
+    "url": "https://run.glot.io/languages/elixir"
+}, {
+    "name": "elm",
+    "url": "https://run.glot.io/languages/elm"
+}, {
+    "name": "erlang",
+    "url": "https://run.glot.io/languages/erlang"
+}, {
+    "name": "fsharp",
+    "url": "https://run.glot.io/languages/fsharp"
+}, {
+    "name": "go",
+    "url": "https://run.glot.io/languages/go"
+}, {
+    "name": "groovy",
+    "url": "https://run.glot.io/languages/groovy"
+}, {
+    "name": "haskell",
+    "url": "https://run.glot.io/languages/haskell"
+}, {
+    "name": "idris",
+    "url": "https://run.glot.io/languages/idris"
+}, {
+    "name": "java",
+    "url": "https://run.glot.io/languages/java"
+}, {
+    "name": "javascript",
+    "url": "https://run.glot.io/languages/javascript"
+}, {
+    "name": "julia",
+    "url": "https://run.glot.io/languages/julia"
+}, {
+    "name": "kotlin",
+    "url": "https://run.glot.io/languages/kotlin"
+}, {
+    "name": "lua",
+    "url": "https://run.glot.io/languages/lua"
+}, {
+    "name": "mercury",
+    "url": "https://run.glot.io/languages/mercury"
+}, {
+    "name": "nim",
+    "url": "https://run.glot.io/languages/nim"
+}, {
+    "name": "ocaml",
+    "url": "https://run.glot.io/languages/ocaml"
+}, {
+    "name": "perl",
+    "url": "https://run.glot.io/languages/perl"
+}, {
+    "name": "perl6",
+    "url": "https://run.glot.io/languages/perl6"
+}, {
+    "name": "php",
+    "url": "https://run.glot.io/languages/php"
+}, {
+    "name": "python",
+    "url": "https://run.glot.io/languages/python"
+}, {
+    "name": "ruby",
+    "url": "https://run.glot.io/languages/ruby"
+}, {
+    "name": "rust",
+    "url": "https://run.glot.io/languages/rust"
+}, {
+    "name": "scala",
+    "url": "https://run.glot.io/languages/scala"
+}, {
+    "name": "swift",
+    "url": "https://run.glot.io/languages/swift"
+}, {
+    "name": "typescript",
+    "url": "https://run.glot.io/languages/typescript"
+}]

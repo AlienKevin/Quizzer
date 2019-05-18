@@ -10,7 +10,27 @@ const workingModeList = [
   "htmlmixed",
   "sql",
   "python",
-  "clike"
+  "clike",
+  "markdown",
+  "erlang",
+  "d",
+  "go",
+  "haskel",
+  "perl",
+  "shell",
+  "clojure",
+  "cobol",
+  "coffescript",
+  "crystal",
+  "elm",
+  "mllike",
+  "groovy",
+  "julia",
+  "lua",
+  "php",
+  "ruby",
+  "rust",
+  "swift",
 ];
 
 const codeLanguages = Object.entries(codeLanguageList)

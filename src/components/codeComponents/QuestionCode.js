@@ -14,8 +14,29 @@ import("codemirror/mode/python/python");
 import("codemirror/mode/xml/xml");
 import("codemirror/mode/css/css");
 import("codemirror/mode/javascript/javascript");
-// import("codemirror/mode/htmlmixed/html");
+import("codemirror/mode/htmlmixed/htmlmixed");
 import("codemirror/mode/sql/sql");
+import("codemirror/mode/markdown/markdown");
+
+import("codemirror/mode/erlang/erlang");
+import("codemirror/mode/d/d");
+import("codemirror/mode/go/go");
+import("codemirror/mode/haskell/haskell");
+import("codemirror/mode/perl/perl");
+import("codemirror/mode/shell/shell");
+import("codemirror/mode/clojure/clojure");
+import("codemirror/mode/cobol/cobol");
+import("codemirror/mode/coffeescript/coffeescript");
+import("codemirror/mode/crystal/crystal");
+import("codemirror/mode/elm/elm");
+import("codemirror/mode/mllike/mllike");
+import("codemirror/mode/groovy/groovy");
+import("codemirror/mode/julia/julia");
+import("codemirror/mode/lua/lua");
+import("codemirror/mode/php/php");
+import("codemirror/mode/ruby/ruby");
+import("codemirror/mode/rust/rust");
+import("codemirror/mode/swift/swift");
 
 const styles = {
   code: {
@@ -62,7 +83,7 @@ class QuestionCode extends Component {
     const requestData = {
       files: [
         {
-          name: `main`,
+          name: `main.swift`,
           content: code
         }
       ]
